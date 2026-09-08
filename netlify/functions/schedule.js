@@ -1,5 +1,3 @@
-const { getStore, connectLambda } = require("@netlify/blobs");
-
 const AREA_BY_ROLE = { miguel: "cocina", juan: "servicio" };
 const KEY = "state";
 
@@ -29,6 +27,7 @@ function defaultState() {
 }
 
 function store() {
+  const { getStore } = require("@netlify/blobs");
   return getStore({ name: "bb-horario", consistency: "strong" });
 }
 
@@ -77,7 +76,7 @@ function isValidEmployee(e) {
 
 exports.handler = async (event) => {
   try {
-    try { connectLambda(event); } catch (e) { /* not running under Netlify Lambda compat, e.g. local test */ }
+    try { require("@netlify/blobs").connectLambda(event); } catch (e) { /* not running under Netlify Lambda compat, e.g. local test */ }
 
     if (event.httpMethod === "GET") {
       const state = await loadState();
