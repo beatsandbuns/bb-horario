@@ -28,7 +28,7 @@ function defaultState() {
 
 function store() {
   const { getStore } = require("@netlify/blobs");
-  return getStore({ name: "bb-horario", consistency: "strong" });
+  return getStore({ name: "bb-horario" });
 }
 
 async function loadState() {
