@@ -1,0 +1,9 @@
+{
+  "name": "bb-horario",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Beats & Buns - horario de turnos (cocina / servicio y barra)",
+  "dependencies": {
+    "@netlify/blobs": "^11.0.3"
+  }
+}
