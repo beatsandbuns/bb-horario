@@ -188,7 +188,16 @@
     });
   }
   function fetchState(){
-    return fetch("/api/schedule", {cache:"no-store"}).then(function(res){ return res.json(); });
+    return fetch("/api/schedule", {cache:"no-store"}).then(function(res){
+      return res.json().catch(function(){ return null; }).then(function(data){
+        if(!res.ok){
+          var msg = (data && (data.message || data.error)) ? (data.message || data.error) : ("HTTP " + res.status);
+          throw new Error(msg);
+        }
+        if(!data || !data.draft){ throw new Error("respuesta_invalida"); }
+        return data;
+      });
+    });
   }
 
   function getCreds(){
@@ -281,8 +290,9 @@
     state = s;
     render();
     hideSplash();
-  }).catch(function(){
-    appEl.innerHTML = '<div class="loading">No se pudo cargar el horario. Revisa tu conexión y recarga la página.</div>';
+  }).catch(function(err){
+    var detail = err && err.message ? err.message : "error desconocido";
+    appEl.innerHTML = '<div class="loading">No se pudo cargar el horario.<br><small style="opacity:.6;font-size:12px">Detalle: ' + esc(detail) + '</small></div>';
     hideSplash();
   });
 
