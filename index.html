@@ -307,7 +307,7 @@
   }
 
   function topbar(showLogout){
-    var badge = role ? ('<span class="role-badge">' + (role==="miguel"?"Panel de Miguel · Cocina":"Panel de Juan · Servicio y Barra") + '</span>') :
+    var badge = role ? ('<span class="role-badge">' + (role==="miguel"?"Panel Chef · Cocina":"Panel Jefe de Servicio · Servicio y Barra") + '</span>') :
       '<span class="role-badge">Vista del equipo</span>';
     return '' +
       '<div class="topbar">' +
@@ -321,7 +321,7 @@
     appEl.innerHTML =
       topbar() +
       '<div class="gate-wrap"><div class="gate" id="gate-card">' +
-        '<h1>' + (role==="miguel" ? "Hola, Miguel" : "Hola, Juan") + '</h1>' +
+        '<h1>' + (role==="miguel" ? "Hola, Chef" : "Hola, Jefe de Servicio") + '</h1>' +
         '<p>Ingresa tu PIN de 4 dígitos para editar el horario de ' + (role==="miguel"?"cocina":"servicio y barra") + '.</p>' +
         '<input type="password" inputmode="numeric" maxlength="4" pattern="[0-9]*" class="pin-input" id="pin-field" placeholder="••••" autocomplete="off">' +
         '<div class="gate-error" id="gate-error"></div>' +
@@ -422,7 +422,7 @@
 
         '<div class="footer-links">' +
           '<a href="?" target="_blank">Ver horario del equipo</a>' +
-          '<a href="?rol=' + otherArea + '" target="_blank">Panel de ' + (otherArea==="cocina"?"Miguel":"Juan") + '</a>' +
+          '<a href="?rol=' + otherArea + '" target="_blank">Panel ' + (otherArea==="cocina"?"Chef":"Jefe de Servicio") + '</a>' +
         '</div>' +
       '</div>';
 
@@ -608,8 +608,8 @@
         '</div>' +
 
         '<div class="footer-links">' +
-          '<a href="?rol=juan" target="_blank">Panel de Juan</a>' +
-          '<a href="?rol=miguel" target="_blank">Panel de Miguel</a>' +
+          '<a href="?rol=juan" target="_blank">Panel Jefe de Servicio</a>' +
+          '<a href="?rol=miguel" target="_blank">Panel Chef</a>' +
         '</div>' +
       '</div>';
   }
