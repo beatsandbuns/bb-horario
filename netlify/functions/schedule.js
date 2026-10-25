@@ -40,6 +40,9 @@ async function loadState() {
     await s.setJSON(KEY, state);
   }
   if (!state.published) state.published = JSON.parse(JSON.stringify(state.draft));
+  // Reseteo de PIN desde Netlify: si existe la variable de entorno, manda sobre el PIN guardado.
+  if (/^[0-9]{4}$/.test(process.env.PIN_MIGUEL || "")) state.pins.miguel = process.env.PIN_MIGUEL;
+  if (/^[0-9]{4}$/.test(process.env.PIN_JUAN || "")) state.pins.juan = process.env.PIN_JUAN;
   return state;
 }
 
