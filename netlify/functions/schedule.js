@@ -41,8 +41,8 @@ async function loadState() {
   }
   if (!state.published) state.published = JSON.parse(JSON.stringify(state.draft));
   // Reseteo de PIN desde Netlify: si existe la variable de entorno, manda sobre el PIN guardado.
-  if (/^[0-9]{4}$/.test(process.env.PIN_MIGUEL || "")) state.pins.miguel = process.env.PIN_MIGUEL;
-  if (/^[0-9]{4}$/.test(process.env.PIN_JUAN || "")) state.pins.juan = process.env.PIN_JUAN;
+  if (/^[0-9]{4}$/.test(process.env.PIN_COCINA || "")) state.pins.miguel = process.env.PIN_COCINA;
+  if (/^[0-9]{4}$/.test(process.env.PIN_SERVICIO || "")) state.pins.juan = process.env.PIN_SERVICIO;
   return state;
 }
 
